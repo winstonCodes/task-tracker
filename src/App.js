@@ -27,19 +27,29 @@ const App = () => {
   const [aetArray, setAetArray] = useState(aetData);
 
   const addAetObject = aet => {
-    let aetObject = {}
-    aetObject.submitTime = Date.now();
-    aetObject.aet = aet;
-    setAetArray([...aetArray, aetObject])
+    const newAet = Number(aet)
+    if (newAet){
+      let aetObject = {}
+      aetObject.submitTime = Date.now();
+      aetObject.aet = newAet;
+      setAetArray([...aetArray, aetObject])
+    } 
+  }
+
+  const updateAetTotal = (array) => {
+    if (array.length > 1){
+      return array.reduce((sum, current) => (Number(sum) + Number(current)));
+    }
   }
 
 
+  // <header className="App-header"><h1>!</h1></header>
+
   return (
     <div className="App">
-      <header className="App-header"><h1>!</h1></header>
       <InputForm addAetObject={addAetObject} />
       <List aetArray={aetArray} />
-      <TotalFooter />
+      <TotalFooter aetArray={aetArray} updateAetTotal={updateAetTotal} />
     </div>
   );
 }

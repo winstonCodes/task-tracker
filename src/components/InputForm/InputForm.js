@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./InputForm.sass"
 
 const InputForm = props => {
@@ -21,6 +21,11 @@ const InputForm = props => {
 		addAetObject(aetObject.name);
 		setAet(initialAetState);
 	}
+	
+	useEffect(() => {
+		var listEl = document.getElementsByClassName("list-wrapper")[0];
+		listEl.scrollBy(0, 36);
+	})
 
 
 	return (
