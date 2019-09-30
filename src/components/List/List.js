@@ -6,8 +6,9 @@ const List = props => {
 
 	// create an array of li
 	const aetLiArray = aetArray.map((value, index) => (
-		<li key={index}>
-			<span style={{fontSize: "10px"}}>{value.submitTime}</span>{value.aet}
+		<li className="list-item" key={index}>
+			<span className="li-time">{value.submitTime}</span>
+			<span className="li-aet">{value.aet}</span>
 		</li>
 	));
 

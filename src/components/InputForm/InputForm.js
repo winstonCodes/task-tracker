@@ -17,7 +17,6 @@ const InputForm = props => {
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		console.log(aetObject)
 		addAetObject(aetObject.name);
 		setAet(initialAetState);
 	}

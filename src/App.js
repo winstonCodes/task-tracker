@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.sass';
 import InputForm from './components/InputForm/';
 import List from './components/List/';
 import TotalFooter from './components/TotalFooter/'
+import moment from 'moment';
 import TimeObject from './components/TimeObject/';
 
 const App = () => {
@@ -30,17 +31,27 @@ const App = () => {
     const newAet = Number(aet)
     if (newAet){
       let aetObject = {}
-      aetObject.submitTime = Date.now();
+      aetObject.submitTime = moment().format("LTS");
       aetObject.aet = newAet;
       setAetArray([...aetArray, aetObject])
     } 
   }
 
   const updateAetTotal = (array) => {
-    if (array.length > 1){
+    if (array.length > 0){
       return array.reduce((sum, current) => (Number(sum) + Number(current)));
     }
   }
+
+  const resetArray = () => {
+    const newArray = [];
+    setAetArray(newArray);
+  }
+
+  // Save function
+  useEffect(() => {
+    store("aetData", aetArray);
+  })
 
 
   // <header className="App-header"><h1>!</h1></header>
@@ -49,7 +60,7 @@ const App = () => {
     <div className="App">
       <InputForm addAetObject={addAetObject} />
       <List aetArray={aetArray} />
-      <TotalFooter aetArray={aetArray} updateAetTotal={updateAetTotal} />
+      <TotalFooter aetArray={aetArray} updateAetTotal={updateAetTotal} resetArray={resetArray} />
     </div>
   );
 }
