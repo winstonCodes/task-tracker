@@ -2,6 +2,7 @@
   "name": "aet-tracker-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://winstoncodes.github.io/todo-react",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
@@ -14,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
