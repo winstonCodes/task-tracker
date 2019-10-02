@@ -2,7 +2,7 @@
   "name": "aet-tracker-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://winstoncodes.github.io/todo-react",
+  "homepage": "https://winstoncodes.github.io/time-tracker",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
