@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <InputForm addAetObject={addAetObject} />
+      <InputForm addAetObject={addAetObject} aetArray={aetArray} />
       <List aetArray={aetArray} />
       <TotalFooter aetArray={aetArray} updateAetTotal={updateAetTotal} resetArray={resetArray} />
     </div>
