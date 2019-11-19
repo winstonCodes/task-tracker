@@ -13,37 +13,40 @@ const InputForm = props => {
   const handleInputChange = event => {
     const {name, value} = event.target;
     setInput({[name]: value});
-  };
+  }
 
   // TODO: improve readability
   const handleKeyDown = event => {
+
     const {name} = event.target;
     let counterCopy = counter;
+
     if (event.keyCode === 38) {
       counterCopy++;
       counterCopy = counterCopy > aetArray.length ? counterCopy = aetArray.length : counterCopy
       setCounter(counterCopy);
       setInput({[name]: aetArray[aetArray.length - counterCopy].aet});
     }
+    
     if (event.keyCode === 40) {
       counterCopy--;
       counterCopy = counterCopy < 1 ? counterCopy = 1 : counterCopy
       setCounter(counterCopy);
       setInput({[name]: aetArray[aetArray.length - counterCopy].aet});
     }
-  };
+  }
 
   const handleSubmit = event => {
     event.preventDefault();
     addAetObject(input.name);
     setInput(initialInput);
     setCounter(0);
-  };
+  }
 
   useEffect(() => {
     var listEl = document.getElementsByClassName('list-wrapper')[0];
     listEl.scrollBy(0, 36);
-  });
+  })
 
   return (
     <div className="form-wrapper">
