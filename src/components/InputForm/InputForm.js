@@ -8,22 +8,36 @@ const InputForm = props => {
 
   const [input, setInput] = useState(initialInput);
 
+  const [counter, setCounter] = useState(0);
+
   const handleInputChange = event => {
     const {name, value} = event.target;
     setInput({[name]: value});
   };
 
+  // TODO: improve readability
   const handleKeyDown = event => {
-    if(event.keyCode === 38){
     const {name} = event.target;
-    setInput({[name]: aetArray[aetArray.length - 1].aet});
+    let counterCopy = counter;
+    if (event.keyCode === 38) {
+      counterCopy++;
+      counterCopy = counterCopy > aetArray.length ? counterCopy = aetArray.length : counterCopy
+      setCounter(counterCopy);
+      setInput({[name]: aetArray[aetArray.length - counterCopy].aet});
     }
-  }
+    if (event.keyCode === 40) {
+      counterCopy--;
+      counterCopy = counterCopy < 1 ? counterCopy = 1 : counterCopy
+      setCounter(counterCopy);
+      setInput({[name]: aetArray[aetArray.length - counterCopy].aet});
+    }
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
     addAetObject(input.name);
     setInput(initialInput);
+    setCounter(0);
   };
 
   useEffect(() => {
